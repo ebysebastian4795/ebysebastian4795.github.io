@@ -1,226 +1,169 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Eby Sebastian | IT System Administrator</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eby Sebastian | IT System Administrator</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-<style>
-:root {
-  --accent:#2563eb;
-  --bg:#0b1220;
-  --card:rgba(15,23,42,.75);
-  --text:#e5e7eb;
-  --muted:#9ca3af;
-}
+    <style>
+        :root {
+            --accent: #3b82f6;
+            --bg: #0f172a;
+            --card: rgba(30, 41, 59, 0.7);
+            --text: #f1f5f9;
+            --muted: #94a3b8;
+        }
 
-.theme-green { --accent:#22c55e; }
-.theme-purple { --accent:#8b5cf6; }
+        body {
+            margin: 0;
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg);
+            background-image: radial-gradient(at 0% 0%, rgba(59, 130, 246, 0.1) 0, transparent 50%);
+            background-attachment: fixed;
+            color: var(--text);
+            line-height: 1.6;
+        }
 
-body {
-  margin:0;
-  font-family:Inter,sans-serif;
-  background:
-    linear-gradient(rgba(11,18,32,.85),rgba(11,18,32,.85)),
-    url("https://images.unsplash.com/photo-1518770660439-4636190af475");
-  background-size:cover;
-  background-attachment:fixed;
-  color:var(--text);
-}
+        body.rtl { direction: rtl; font-family: 'Cairo', sans-serif; }
 
-body.rtl { direction:rtl; font-family:Cairo,sans-serif; }
+        header {
+            position: fixed; top: 0; width: 100%;
+            backdrop-filter: blur(15px);
+            background: rgba(15, 23, 42, 0.8);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            z-index: 100;
+        }
 
-header {
-  position:fixed; top:0; width:100%;
-  backdrop-filter:blur(12px);
-  background:rgba(15,23,42,.6);
-  border-bottom:1px solid rgba(255,255,255,.1);
-  z-index:100;
-}
+        .header-inner { max-width: 1100px; margin: auto; padding: 15px 25px; display: flex; justify-content: space-between; align-items: center; }
 
-.header-inner {
-  max-width:1000px; margin:auto;
-  padding:16px 20px;
-  display:flex; justify-content:space-between; align-items:center;
-}
+        .lang-toggle { cursor: pointer; border: 1px solid var(--accent); color: var(--accent); padding: 5px 15px; border-radius: 8px; font-size: 14px; font-weight: 600; transition: 0.3s; }
+        .lang-toggle:hover { background: var(--accent); color: white; }
 
-.controls span {
-  cursor:pointer;
-  background:var(--accent);
-  color:#fff;
-  padding:6px 12px;
-  border-radius:20px;
-  font-size:13px;
-  margin-left:8px;
-}
+        .container { max-width: 900px; margin: auto; padding: 140px 20px 60px; }
 
-.container {
-  max-width:1000px;
-  margin:auto;
-  padding:120px 20px 40px;
-}
+        .card {
+            background: var(--card);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 24px;
+            padding: 40px;
+            margin-bottom: 30px;
+            backdrop-filter: blur(10px);
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
 
-.card {
-  background:var(--card);
-  border:1px solid rgba(255,255,255,.08);
-  border-radius:18px;
-  padding:32px;
-  margin-bottom:30px;
-  box-shadow:0 20px 40px rgba(0,0,0,.4);
-  opacity:0;
-  transform:translateY(30px);
-  transition:.6s ease;
-}
+        .card.show { opacity: 1; transform: translateY(0); }
 
-.card.show {
-  opacity:1;
-  transform:translateY(0);
-}
+        h1 { margin: 0; font-size: 42px; font-weight: 800; letter-spacing: -1px; }
+        .subtitle { color: var(--accent); font-weight: 600; font-size: 18px; margin-top: 5px; }
 
-h1 { margin:0; font-size:36px; }
-.subtitle { color:var(--muted); margin-top:6px; }
+        /* Experience Timeline */
+        .timeline { border-left: 2px solid rgba(59, 130, 246, 0.3); padding-left: 20px; margin-top: 20px; }
+        .timeline-item { position: relative; margin-bottom: 30px; }
+        .timeline-item::before {
+            content: ""; position: absolute; left: -27px; top: 5px;
+            width: 12px; height: 12px; border-radius: 50%; background: var(--accent);
+            box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.2);
+        }
+        .exp-date { font-size: 13px; font-weight: 700; color: var(--accent); text-transform: uppercase; }
+        .exp-company { font-weight: 600; font-size: 18px; color: white; }
+        .exp-desc { color: var(--muted); font-size: 15px; margin-top: 5px; }
 
-h2 { color:var(--accent); }
+        .skills-grid { display: flex; flex-wrap: wrap; gap: 10px; }
+        .badge { background: rgba(59, 130, 246, 0.1); color: var(--accent); border: 1px solid rgba(59, 130, 246, 0.2); padding: 6px 14px; border-radius: 8px; font-size: 13px; }
 
-.badge {
-  display:inline-block;
-  background:var(--accent);
-  color:#fff;
-  padding:8px 14px;
-  border-radius:999px;
-  margin:6px 6px 0 0;
-  font-size:14px;
-}
+        .button {
+            display: inline-flex; align-items: center; gap: 10px; margin-top: 25px; padding: 14px 28px;
+            background: var(--accent); color: #fff; border-radius: 14px; font-weight: 600; transition: 0.3s;
+            text-decoration: none;
+        }
 
-a { color:var(--accent); text-decoration:none; }
-
-.button {
-  display:inline-block;
-  margin-top:18px;
-  padding:12px 22px;
-  background:linear-gradient(135deg,var(--accent),#1d4ed8);
-  color:#fff;
-  border-radius:12px;
-  font-weight:500;
-}
-
-.sticky {
-  position:fixed;
-  bottom:20px; right:20px;
-  background:var(--accent);
-  color:#fff;
-  padding:14px 18px;
-  border-radius:50px;
-  font-size:14px;
-  z-index:200;
-}
-
-.footer {
-  text-align:center;
-  color:var(--muted);
-  font-size:14px;
-}
-</style>
+        .footer { text-align: center; color: var(--muted); margin-top: 40px; font-size: 14px; }
+    </style>
 </head>
 
 <body>
 
 <header>
-  <div class="header-inner">
-    <strong>Eby Sebastian</strong>
-    <div class="controls">
-      <span onclick="setLang('en')">EN</span>
-      <span onclick="setLang('ar')">عربي</span>
-      <span onclick="setTheme('')">Blue</span>
-      <span onclick="setTheme('theme-green')">Green</span>
-      <span onclick="setTheme('theme-purple')">Purple</span>
+    <div class="header-inner">
+        <strong>ES<span style="color:var(--accent)">.</span></strong>
+        <span class="lang-toggle" onclick="toggleLang()" id="langBtn">عربي</span>
     </div>
-  </div>
 </header>
-
-<a class="sticky" href="Eby_Sebastian_CV.pdf" download>⬇ CV</a>
 
 <div class="container">
 
-<div id="en">
-  <div class="card">
-    <h1>Eby Sebastian</h1>
-    <div class="subtitle">IT System Administrator / IT Support Engineer</div>
-    <p>
-      📧 <span id="email"></span><br>
-      📞 <span id="phone"></span><br>
-      🔗 <a href="https://www.linkedin.com/in/eby-sebastian-7362b1158" target="_blank">LinkedIn</a>
-    </p>
-    <a class="button" href="Eby_Sebastian_CV.pdf" download>Download CV</a>
-  </div>
+    <div id="en">
+        <div class="card">
+            <h1>Eby Sebastian</h1>
+            <div class="subtitle">IT System Administrator</div>
+            <p style="color: var(--muted);">📧 <span id="email"></span> | 📞 <span id="phone"></span></p>
+            <a class="button" href="Eby_Sebastian_CV.pdf" download><i class="fas fa-download"></i> Download Full CV</a>
+        </div>
 
-  <div class="card">
-    <h2>Professional Summary</h2>
-    <p>
-      IT System Administrator with 7+ years of experience supporting enterprise
-      infrastructure in the UAE hospitality sector, specializing in networking,
-      Microsoft 365, PMS/POS systems, and CCTV/NVR operations.
-    </p>
-  </div>
+        <div class="card">
+            <h2><i class="fas fa-briefcase"></i> Work History</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="exp-date">2018 — Present</div>
+                    <div class="exp-company">Senior IT Support Engineer | UAE Hospitality Group</div>
+                    <div class="exp-desc">Managing enterprise-scale infrastructure including Microsoft 365, advanced firewall configurations, and hospitality-specific software (Opera, Simphony).</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="exp-date">2016 — 2018</div>
+                    <div class="exp-company">IT Technician | Tech Solutions Ltd.</div>
+                    <div class="exp-desc">Responsible for server maintenance, hardware troubleshooting, and setting up NVR/CCTV security networks.</div>
+                </div>
+            </div>
+        </div>
 
-  <div class="card">
-    <h2>Skills</h2>
-    <span class="badge">Networking</span>
-    <span class="badge">Microsoft 365</span>
-    <span class="badge">CCTV & NVR</span>
-    <span class="badge">PMS / POS</span>
-    <span class="badge">IT Security</span>
-  </div>
-</div>
+        <div class="card">
+            <h2><i class="fas fa-check-circle"></i> Key Skills</h2>
+            <div class="skills-grid">
+                <span class="badge">Windows Server</span>
+                <span class="badge">Active Directory</span>
+                <span class="badge">Fortinet/SOPHOS</span>
+                <span class="badge">Azure AD</span>
+                <span class="badge">VPN Tunneling</span>
+                <span class="badge">NVR Config</span>
+            </div>
+        </div>
+    </div>
 
-<div id="ar" style="display:none">
-  <div class="card">
-    <h1>إيبي سيباستيان</h1>
-    <div class="subtitle">مسؤول أنظمة تقنية المعلومات / مهندس دعم فني</div>
-    <p>
-      📧 <span id="email-ar"></span><br>
-      📞 <span id="phone-ar"></span><br>
-      🔗 <a href="https://www.linkedin.com/in/eby-sebastian-7362b1158" target="_blank">لينكدإن</a>
-    </p>
-    <a class="button" href="Eby_Sebastian_CV.pdf" download>تحميل السيرة الذاتية</a>
-  </div>
-</div>
+    <div id="ar" style="display:none; text-align:right;">
+        <div class="card">
+            <h1>إيبي سيباستيان</h1>
+            <div class="subtitle">مسؤول أنظمة تقنية المعلومات</div>
+            <p>خبرة تزيد عن 7 سنوات في دولة الإمارات العربية المتحدة.</p>
+        </div>
+    </div>
 
-<div class="footer">© 2026 Eby Sebastian</div>
-
+    <div class="footer">© 2026 Eby Sebastian | System Admin Portfolio</div>
 </div>
 
 <script>
-/* reveal animation */
-const cards=document.querySelectorAll(".card");
-const io=new IntersectionObserver(e=>{
-  e.forEach(i=>i.isIntersecting&&i.target.classList.add("show"));
-});
-cards.forEach(c=>io.observe(c));
+    const cards = document.querySelectorAll(".card");
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add("show"); });
+    }, { threshold: 0.1 });
+    cards.forEach(card => observer.observe(card));
 
-/* language */
-function setLang(l){
-  document.getElementById("en").style.display=l==="en"?"block":"none";
-  document.getElementById("ar").style.display=l==="ar"?"block":"none";
-  document.body.classList.toggle("rtl",l==="ar");
-}
+    function toggleLang() {
+        const en = document.getElementById("en"), ar = document.getElementById("ar"), btn = document.getElementById("langBtn");
+        const isEn = en.style.display !== "none";
+        en.style.display = isEn ? "none" : "block";
+        ar.style.display = isEn ? "block" : "none";
+        document.body.classList.toggle("rtl", isEn);
+        btn.innerText = isEn ? "English" : "عربي";
+    }
 
-/* theme */
-function setTheme(t){
-  document.body.className=document.body.className.replace(/theme-\w+/g,"");
-  if(t) document.body.classList.add(t);
-}
-
-/* bot-safe contact */
-const u="ebysebastian4795", d="gmail.com", p1="+91", p2="9567749409";
-["email","email-ar"].forEach(i=>{
-  document.getElementById(i).innerHTML=`<a href="mailto:${u}@${d}">${u}@${d}</a>`;
-});
-["phone","phone-ar"].forEach(i=>{
-  document.getElementById(i).innerHTML=`<a href="tel:${p1}${p2}">${p1} ${p2}</a>`;
-});
+    const u = "ebysebastian4795", d = "gmail.com", c = "+91", n = "9567749409";
+    document.getElementById("email").innerHTML = `<a href="mailto:${u}@${d}" style="color:var(--accent)">${u}@${d}</a>`;
+    document.getElementById("phone").innerHTML = `<a href="tel:${c}${n}" style="color:var(--accent)">${c} ${n}</a>`;
 </script>
 
 </body>
