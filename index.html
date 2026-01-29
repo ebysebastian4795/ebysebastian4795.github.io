@@ -1,52 +1,192 @@
-
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Eby Sebastian | IT System Administrator</title>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style>
-        body { font-family: Arial, sans-serif; max-width: 900px; margin: auto; padding: 20px; line-height: 1.6; }
-        h1, h2 { color: #2c3e50; }
-        hr { margin: 30px 0; }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Eby Sebastian | IT System Administrator</title>
+
+<style>
+:root {
+    --bg: #f4f6f8;
+    --card: #ffffff;
+    --text: #333;
+    --heading: #1f2937;
+    --accent: #2563eb;
+}
+
+body.dark {
+    --bg: #0f172a;
+    --card: #1e293b;
+    --text: #e5e7eb;
+    --heading: #ffffff;
+    --accent: #38bdf8;
+}
+
+body {
+    margin: 0;
+    font-family: "Segoe UI", Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+}
+
+.container {
+    max-width: 900px;
+    margin: auto;
+    padding: 40px 20px;
+}
+
+.card {
+    background: var(--card);
+    padding: 30px;
+    margin-bottom: 25px;
+    border-radius: 12px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+}
+
+h1 {
+    margin: 0;
+    color: var(--heading);
+    font-size: 36px;
+}
+
+h2 {
+    color: var(--accent);
+    border-bottom: 2px solid rgba(0,0,0,0.1);
+    padding-bottom: 8px;
+}
+
+.subtitle {
+    font-size: 18px;
+    opacity: 0.85;
+}
+
+.contact a {
+    color: var(--accent);
+    text-decoration: none;
+    margin-right: 15px;
+}
+
+.button {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 10px 18px;
+    background: var(--accent);
+    color: #fff;
+    border-radius: 8px;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.badge {
+    display: inline-block;
+    background: var(--accent);
+    color: #fff;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 14px;
+    margin: 5px 5px 0 0;
+}
+
+.toggle {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 8px 14px;
+    border-radius: 20px;
+    background: var(--accent);
+    color: #fff;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.footer {
+    text-align: center;
+    font-size: 14px;
+    opacity: 0.7;
+    margin-top: 30px;
+}
+</style>
 </head>
+
 <body>
 
-<h1>Eby Sebastian</h1>
-<p><strong>IT System Administrator / IT Support Engineer</strong></p>
-<p>📧 ebysebastian4795@gmail.com | 📞 +91 95677 49409</p>
+<div class="toggle" onclick="toggleDark()">🌙 Dark Mode</div>
 
-<hr>
+<div class="container">
 
-<h2>Professional Summary</h2>
-<p>Experienced IT System Administrator with 7+ years of experience supporting IT infrastructure in the UAE hospitality sector...</p>
+<div class="card">
+    <h1>Eby Sebastian</h1>
+    <p class="subtitle">IT System Administrator / IT Support Engineer</p>
+    <p class="contact">
+        📧 <a href="mailto:ebysebastian4795@gmail.com">ebysebastian4795@gmail.com</a>
+        📞 +91 95677 49409 <br><br>
+        🔗 <a href="https://www.linkedin.com/in/eby-sebastian-7362b1158" target="_blank">
+        LinkedIn Profile</a>
+    </p>
 
-<hr>
+    <!-- Download CV -->
+    <a class="button" href="Eby_Sebastian_CV.pdf" download>⬇ Download CV (PDF)</a>
+</div>
 
-<h2>Experience</h2>
-<p><strong>IT Coordinator – Sandy Beach Hotel & Resort, UAE</strong><br>
-Sep 2021 – Oct 2025</p>
-<ul>
-    <li>Managed hotel IT infrastructure</li>
-    <li>Configured routers, switches, access points</li>
-    <li>Maintained CCTV & NVR systems</li>
-</ul>
+<div class="card">
+    <h2>Professional Summary</h2>
+    <p>
+        IT System Administrator with 7+ years of experience managing IT infrastructure
+        in the UAE hospitality sector. Strong expertise in networking, Microsoft 365,
+        PMS/POS systems, CCTV & NVR surveillance, and IT support operations.
+    </p>
+</div>
 
-<hr>
+<div class="card">
+    <h2>Experience</h2>
+    <p><strong>IT Coordinator – Sandy Beach Hotel & Resort, Fujairah</strong><br>
+    Sep 2021 – Oct 2025</p>
+    <ul>
+        <li>Managed full hotel IT infrastructure</li>
+        <li>Configured routers, switches, and access points</li>
+        <li>Administered Microsoft 365 & email systems</li>
+        <li>Maintained PMS (WinHMS) & POS (Prologic Touche)</li>
+        <li>Installed and managed 130+ IP cameras & NVRs</li>
+    </ul>
 
-<h2>Skills</h2>
-<ul>
-    <li>Network Troubleshooting</li>
-    <li>Microsoft 365 Administration</li>
-    <li>PMS & POS Support</li>
-</ul>
+    <p><strong>IT Support Engineer – Muthoot Fincorp, India</strong><br>
+    Sep 2018 – Jun 2021</p>
+    <ul>
+        <li>Provided onsite & remote IT support</li>
+        <li>Maintained DVR and security systems</li>
+        <li>Handled service tickets and reporting</li>
+    </ul>
+</div>
 
-<hr>
+<div class="card">
+    <h2>Skills</h2>
+    <span class="badge">Networking & LAN</span>
+    <span class="badge">Microsoft 365</span>
+    <span class="badge">CCTV & NVR</span>
+    <span class="badge">PMS / POS</span>
+    <span class="badge">IT Security</span>
+    <span class="badge">Backup Management</span>
+</div>
 
-<h2>Education & Certifications</h2>
-<p>BCA – Bharathiar University</p>
-<p>CCNA | MCSE</p>
+<div class="card">
+    <h2>Education & Certifications</h2>
+    <p>
+        Bachelor of Computer Applications – Bharathiar University<br><br>
+        CCNA | MCSE
+    </p>
+</div>
+
+<div class="footer">
+    © 2026 Eby Sebastian
+</div>
+
+</div>
+
+<script>
+function toggleDark() {
+    document.body.classList.toggle("dark");
+}
+</script>
 
 </body>
 </html>
