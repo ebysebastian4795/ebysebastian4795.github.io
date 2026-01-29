@@ -4,132 +4,115 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Eby Sebastian | IT System Administrator</title>
-
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&family=Cairo:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
     <style>
         :root {
-            --accent: #3b82f6;
-            --bg: #0f172a;
-            --card: rgba(30, 41, 59, 0.7);
-            --text: #f1f5f9;
+            --accent: #3b82f6; /* Electric Blue */
+            --bg: #020617;
+            --card: rgba(15, 23, 42, 0.8);
+            --text: #f8fafc;
             --muted: #94a3b8;
         }
 
         body {
-            margin: 0;
-            font-family: 'Inter', sans-serif;
-            background-color: var(--bg);
-            background-image: radial-gradient(at 0% 0%, rgba(59, 130, 246, 0.1) 0, transparent 50%);
-            background-attachment: fixed;
-            color: var(--text);
-            line-height: 1.6;
+            margin: 0; font-family: 'Plus Jakarta Sans', sans-serif;
+            background: linear-gradient(rgba(2, 6, 23, 0.85), rgba(2, 6, 23, 0.85)), 
+                        url('https://images.unsplash.com/photo-1558494949-ef010cbdcc51?auto=format&fit=crop&q=80&w=2000');
+            background-size: cover; background-attachment: fixed;
+            color: var(--text); line-height: 1.6;
         }
 
         body.rtl { direction: rtl; font-family: 'Cairo', sans-serif; }
 
         header {
-            position: fixed; top: 0; width: 100%;
-            backdrop-filter: blur(15px);
-            background: rgba(15, 23, 42, 0.8);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-            z-index: 100;
+            position: fixed; top: 0; width: 100%; backdrop-filter: blur(12px);
+            background: rgba(15, 23, 42, 0.7); border-bottom: 1px solid rgba(255,255,255,0.05); z-index: 100;
         }
 
         .header-inner { max-width: 1100px; margin: auto; padding: 15px 25px; display: flex; justify-content: space-between; align-items: center; }
 
-        .lang-toggle { cursor: pointer; border: 1px solid var(--accent); color: var(--accent); padding: 5px 15px; border-radius: 8px; font-size: 14px; font-weight: 600; transition: 0.3s; }
-        .lang-toggle:hover { background: var(--accent); color: white; }
-
         .container { max-width: 900px; margin: auto; padding: 140px 20px 60px; }
 
         .card {
-            background: var(--card);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            border-radius: 24px;
-            padding: 40px;
-            margin-bottom: 30px;
-            backdrop-filter: blur(10px);
-            opacity: 0;
-            transform: translateY(20px);
-            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+            background: var(--card); border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 24px; padding: 40px; margin-bottom: 30px;
+            backdrop-filter: blur(10px); opacity: 0; transform: translateY(20px); transition: 0.8s ease-out;
         }
 
         .card.show { opacity: 1; transform: translateY(0); }
 
-        h1 { margin: 0; font-size: 42px; font-weight: 800; letter-spacing: -1px; }
-        .subtitle { color: var(--accent); font-weight: 600; font-size: 18px; margin-top: 5px; }
+        h1 { margin: 0; font-size: 48px; font-weight: 800; background: linear-gradient(to right, #fff, #60a5fa); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .subtitle { color: var(--accent); font-weight: 700; font-size: 18px; text-transform: uppercase; letter-spacing: 1px; }
 
-        /* Experience Timeline */
-        .timeline { border-left: 2px solid rgba(59, 130, 246, 0.3); padding-left: 20px; margin-top: 20px; }
-        .timeline-item { position: relative; margin-bottom: 30px; }
-        .timeline-item::before {
-            content: ""; position: absolute; left: -27px; top: 5px;
-            width: 12px; height: 12px; border-radius: 50%; background: var(--accent);
-            box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.2);
-        }
-        .exp-date { font-size: 13px; font-weight: 700; color: var(--accent); text-transform: uppercase; }
-        .exp-company { font-weight: 600; font-size: 18px; color: white; }
-        .exp-desc { color: var(--muted); font-size: 15px; margin-top: 5px; }
+        .timeline-item { border-left: 2px solid var(--accent); padding-left: 20px; position: relative; margin-bottom: 40px; }
+        .timeline-item::before { content: ""; position: absolute; left: -9px; top: 5px; width: 16px; height: 16px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 15px var(--accent); }
 
-        .skills-grid { display: flex; flex-wrap: wrap; gap: 10px; }
-        .badge { background: rgba(59, 130, 246, 0.1); color: var(--accent); border: 1px solid rgba(59, 130, 246, 0.2); padding: 6px 14px; border-radius: 8px; font-size: 13px; }
+        .badge { background: rgba(59, 130, 246, 0.15); color: #93c5fd; border: 1px solid rgba(59, 130, 246, 0.3); padding: 6px 14px; border-radius: 8px; font-size: 13px; font-weight: 600; margin: 4px; display: inline-block; }
 
-        .button {
-            display: inline-flex; align-items: center; gap: 10px; margin-top: 25px; padding: 14px 28px;
-            background: var(--accent); color: #fff; border-radius: 14px; font-weight: 600; transition: 0.3s;
-            text-decoration: none;
-        }
+        .btn { display: inline-flex; align-items: center; gap: 10px; padding: 14px 28px; background: var(--accent); color: white; border-radius: 12px; font-weight: 700; text-decoration: none; transition: 0.3s; }
+        .btn:hover { transform: scale(1.05); box-shadow: 0 0 20px rgba(59, 130, 246, 0.4); }
 
-        .footer { text-align: center; color: var(--muted); margin-top: 40px; font-size: 14px; }
+        .lang-btn { cursor: pointer; color: var(--accent); border: 1px solid var(--accent); padding: 5px 15px; border-radius: 8px; font-weight: 600; }
+
+        @media (max-width: 600px) { h1 { font-size: 32px; } }
     </style>
 </head>
-
 <body>
 
 <header>
     <div class="header-inner">
-        <strong>ES<span style="color:var(--accent)">.</span></strong>
-        <span class="lang-toggle" onclick="toggleLang()" id="langBtn">عربي</span>
+        <strong style="font-size: 22px;">EBY<span style="color:var(--accent)">.</span></strong>
+        <span class="lang-btn" onclick="toggleLang()" id="lBtn">عربي</span>
     </div>
 </header>
 
 <div class="container">
-
     <div id="en">
         <div class="card">
-            <h1>Eby Sebastian</h1>
             <div class="subtitle">IT System Administrator</div>
-            <p style="color: var(--muted);">📧 <span id="email"></span> | 📞 <span id="phone"></span></p>
-            <a class="button" href="Eby_Sebastian_CV.pdf" download><i class="fas fa-download"></i> Download Full CV</a>
+            <h1>Eby Sebastian</h1>
+            <p style="color: var(--muted); margin-top: 15px;">
+                <i class="fas fa-map-marker-alt"></i> UAE Hospitality Expert | 7+ Years Experience [cite: 4]
+            </p>
+            <div style="margin-top: 25px; display: flex; flex-wrap: wrap; gap: 20px;">
+                <span><i class="fas fa-envelope text-blue-400"></i> ebysebastian4795@gmail.com [cite: 33]</span>
+                <span><i class="fas fa-phone text-blue-400"></i> +91 9567749409 [cite: 33]</span>
+            </div>
+            <a href="Eby_Sebastian_CV.pdf" class="btn" style="margin-top: 30px;" download>
+                <i class="fas fa-file-pdf"></i> Download Full Resume
+            </a>
         </div>
 
         <div class="card">
-            <h2><i class="fas fa-briefcase"></i> Work History</h2>
-            <div class="timeline">
-                <div class="timeline-item">
-                    <div class="exp-date">2018 — Present</div>
-                    <div class="exp-company">Senior IT Support Engineer | UAE Hospitality Group</div>
-                    <div class="exp-desc">Managing enterprise-scale infrastructure including Microsoft 365, advanced firewall configurations, and hospitality-specific software (Opera, Simphony).</div>
-                </div>
-                <div class="timeline-item">
-                    <div class="exp-date">2016 — 2018</div>
-                    <div class="exp-company">IT Technician | Tech Solutions Ltd.</div>
-                    <div class="exp-desc">Responsible for server maintenance, hardware troubleshooting, and setting up NVR/CCTV security networks.</div>
-                </div>
+            <h2 style="margin-bottom: 30px;"><i class="fas fa-server"></i> Professional Experience</h2>
+            
+            <div class="timeline-item">
+                <div style="color: var(--accent); font-weight: 800;">2021 — 2025 [cite: 9]</div>
+                <div style="font-size: 20px; font-weight: 700;">IT Coordinator</div>
+                <div style="color: var(--muted); margin-bottom: 10px;">Sandy Beach Hotel and Resort, Fujairah [cite: 9]</div>
+                <ul style="padding-left: 20px; color: var(--muted);">
+                    <li>Managed 130+ IP cameras & NVR surveillance[cite: 12].</li>
+                    <li>Support for WinHMS & Prologic Touche POS[cite: 16].</li>
+                    <li>Network config: TP-Link, Mikrotik, D-Link[cite: 11].</li>
+                </ul>
+            </div>
+
+            <div class="timeline-item">
+                <div style="color: var(--accent); font-weight: 800;">2018 — 2021 [cite: 24]</div>
+                <div style="font-size: 20px; font-weight: 700;">IT Support Engineer</div>
+                <div style="color: var(--muted); margin-bottom: 10px;">Muthoot Fincorp, India [cite: 23]</div>
+                <p style="color: var(--muted);">Provided remote and onsite technical support for a massive branch network[cite: 25].</p>
             </div>
         </div>
 
         <div class="card">
-            <h2><i class="fas fa-check-circle"></i> Key Skills</h2>
-            <div class="skills-grid">
-                <span class="badge">Windows Server</span>
-                <span class="badge">Active Directory</span>
-                <span class="badge">Fortinet/SOPHOS</span>
-                <span class="badge">Azure AD</span>
-                <span class="badge">VPN Tunneling</span>
-                <span class="badge">NVR Config</span>
+            <h2><i class="fas fa-bolt"></i> Technical Expertise</h2>
+            <div style="margin-top: 20px;">
+                <span class="badge">CCNA [cite: 35]</span> <span class="badge">MCSE [cite: 37]</span> 
+                <span class="badge">Microsoft 365 [cite: 43]</span> <span class="badge">Network Troubleshooting [cite: 39]</span>
+                <span class="badge">CCTV & NVR [cite: 41]</span> <span class="badge">PMS/POS Support [cite: 42]</span>
+                <span class="badge">ERP Systems [cite: 44]</span> <span class="badge">IT Security [cite: 45]</span>
             </div>
         </div>
     </div>
@@ -138,33 +121,29 @@
         <div class="card">
             <h1>إيبي سيباستيان</h1>
             <div class="subtitle">مسؤول أنظمة تقنية المعلومات</div>
-            <p>خبرة تزيد عن 7 سنوات في دولة الإمارات العربية المتحدة.</p>
+            <p>أكثر من 7 سنوات من الخبرة في قطاع الضيافة في دولة الإمارات العربية المتحدة[cite: 4].</p>
         </div>
     </div>
 
-    <div class="footer">© 2026 Eby Sebastian | System Admin Portfolio</div>
+    <footer class="footer" style="text-align: center; color: var(--muted); font-size: 13px;">
+        © 2026 Eby Sebastian | Professional SysAdmin Portfolio
+    </footer>
 </div>
 
 <script>
-    const cards = document.querySelectorAll(".card");
     const observer = new IntersectionObserver(entries => {
-        entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add("show"); });
-    }, { threshold: 0.1 });
-    cards.forEach(card => observer.observe(card));
+        entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('show'); });
+    });
+    document.querySelectorAll('.card').forEach(c => observer.observe(c));
 
     function toggleLang() {
-        const en = document.getElementById("en"), ar = document.getElementById("ar"), btn = document.getElementById("langBtn");
-        const isEn = en.style.display !== "none";
-        en.style.display = isEn ? "none" : "block";
-        ar.style.display = isEn ? "block" : "none";
-        document.body.classList.toggle("rtl", isEn);
-        btn.innerText = isEn ? "English" : "عربي";
+        const en = document.getElementById('en'), ar = document.getElementById('ar'), b = document.getElementById('lBtn');
+        const isEn = en.style.display !== 'none';
+        en.style.display = isEn ? 'none' : 'block';
+        ar.style.display = isEn ? 'block' : 'none';
+        document.body.classList.toggle('rtl', isEn);
+        b.innerText = isEn ? 'English' : 'عربي';
     }
-
-    const u = "ebysebastian4795", d = "gmail.com", c = "+91", n = "9567749409";
-    document.getElementById("email").innerHTML = `<a href="mailto:${u}@${d}" style="color:var(--accent)">${u}@${d}</a>`;
-    document.getElementById("phone").innerHTML = `<a href="tel:${c}${n}" style="color:var(--accent)">${c} ${n}</a>`;
 </script>
-
 </body>
 </html>
