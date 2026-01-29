@@ -1,149 +1,293 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Eby Sebastian | IT System Administrator</title>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&family=Cairo:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        :root {
-            --accent: #3b82f6; /* Electric Blue */
-            --bg: #020617;
-            --card: rgba(15, 23, 42, 0.8);
-            --text: #f8fafc;
-            --muted: #94a3b8;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Eby Sebastian | IT System Administrator</title>
 
-        body {
-            margin: 0; font-family: 'Plus Jakarta Sans', sans-serif;
-            background: linear-gradient(rgba(2, 6, 23, 0.85), rgba(2, 6, 23, 0.85)), 
-                        url('https://images.unsplash.com/photo-1558494949-ef010cbdcc51?auto=format&fit=crop&q=80&w=2000');
-            background-size: cover; background-attachment: fixed;
-            color: var(--text); line-height: 1.6;
-        }
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-        body.rtl { direction: rtl; font-family: 'Cairo', sans-serif; }
+<style>
+:root {
+  --accent:#cbd5e1;
+  --accent-soft:#94a3b8;
+  --bg:#020617;
+  --card:rgba(15,23,42,.85);
+  --text:#f1f5f9;
+  --muted:#9ca3af;
+  --border:rgba(255,255,255,.08);
+}
 
-        header {
-            position: fixed; top: 0; width: 100%; backdrop-filter: blur(12px);
-            background: rgba(15, 23, 42, 0.7); border-bottom: 1px solid rgba(255,255,255,0.05); z-index: 100;
-        }
+body {
+  margin:0;
+  font-family:'Plus Jakarta Sans',sans-serif;
+  background:
+    linear-gradient(rgba(2,6,23,.88),rgba(2,6,23,.88)),
+    url("https://images.unsplash.com/photo-1558494949-ef010cbdcc51?auto=format&fit=crop&q=80&w=2000");
+  background-size:cover;
+  background-attachment:fixed;
+  color:var(--text);
+}
 
-        .header-inner { max-width: 1100px; margin: auto; padding: 15px 25px; display: flex; justify-content: space-between; align-items: center; }
+body.rtl { direction:rtl; font-family:'Cairo',sans-serif; }
 
-        .container { max-width: 900px; margin: auto; padding: 140px 20px 60px; }
+header {
+  position:fixed; top:0; width:100%;
+  background:rgba(15,23,42,.65);
+  backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--border);
+  z-index:100;
+}
 
-        .card {
-            background: var(--card); border: 1px solid rgba(255,255,255,0.1);
-            border-radius: 24px; padding: 40px; margin-bottom: 30px;
-            backdrop-filter: blur(10px); opacity: 0; transform: translateY(20px); transition: 0.8s ease-out;
-        }
+.header-inner {
+  max-width:1100px; margin:auto;
+  padding:16px 25px;
+  display:flex; justify-content:space-between; align-items:center;
+}
 
-        .card.show { opacity: 1; transform: translateY(0); }
+.lang-btn {
+  cursor:pointer;
+  color:var(--accent);
+  border:1px solid var(--accent-soft);
+  padding:6px 18px;
+  border-radius:10px;
+  font-weight:600;
+}
 
-        h1 { margin: 0; font-size: 48px; font-weight: 800; background: linear-gradient(to right, #fff, #60a5fa); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .subtitle { color: var(--accent); font-weight: 700; font-size: 18px; text-transform: uppercase; letter-spacing: 1px; }
+.container {
+  max-width:900px;
+  margin:auto;
+  padding:140px 20px 60px;
+}
 
-        .timeline-item { border-left: 2px solid var(--accent); padding-left: 20px; position: relative; margin-bottom: 40px; }
-        .timeline-item::before { content: ""; position: absolute; left: -9px; top: 5px; width: 16px; height: 16px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 15px var(--accent); }
+.card {
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:24px;
+  padding:42px;
+  margin-bottom:32px;
+  backdrop-filter:blur(12px);
+  box-shadow:0 25px 50px rgba(0,0,0,.45);
+  opacity:0;
+  transform:translateY(25px);
+  transition:.8s ease;
+}
+.card.show { opacity:1; transform:translateY(0); }
 
-        .badge { background: rgba(59, 130, 246, 0.15); color: #93c5fd; border: 1px solid rgba(59, 130, 246, 0.3); padding: 6px 14px; border-radius: 8px; font-size: 13px; font-weight: 600; margin: 4px; display: inline-block; }
+h1 {
+  margin:0;
+  font-size:46px;
+  font-weight:800;
+  background:linear-gradient(to right,#fff,var(--accent));
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+}
 
-        .btn { display: inline-flex; align-items: center; gap: 10px; padding: 14px 28px; background: var(--accent); color: white; border-radius: 12px; font-weight: 700; text-decoration: none; transition: 0.3s; }
-        .btn:hover { transform: scale(1.05); box-shadow: 0 0 20px rgba(59, 130, 246, 0.4); }
+.subtitle {
+  margin-top:8px;
+  font-weight:700;
+  font-size:14px;
+  text-transform:uppercase;
+  letter-spacing:1.2px;
+  color:var(--accent-soft);
+}
 
-        .lang-btn { cursor: pointer; color: var(--accent); border: 1px solid var(--accent); padding: 5px 15px; border-radius: 8px; font-weight: 600; }
+h2 { color:var(--accent); margin-bottom:26px; }
 
-        @media (max-width: 600px) { h1 { font-size: 32px; } }
-    </style>
+.timeline-item {
+  border-left:2px solid var(--accent-soft);
+  padding-left:24px;
+  position:relative;
+  margin-bottom:36px;
+}
+.timeline-item::before {
+  content:"";
+  position:absolute;
+  left:-9px;
+  top:6px;
+  width:16px; height:16px;
+  border-radius:50%;
+  background:var(--accent);
+}
+
+.badge {
+  background:rgba(203,213,225,.12);
+  color:var(--accent);
+  border:1px solid rgba(203,213,225,.3);
+  padding:7px 16px;
+  border-radius:10px;
+  font-size:13px;
+  font-weight:600;
+  margin:6px;
+  display:inline-block;
+}
+
+.btn {
+  display:inline-flex; align-items:center; gap:10px;
+  padding:14px 30px;
+  background:linear-gradient(135deg,var(--accent),#e5e7eb);
+  color:#020617;
+  border-radius:14px;
+  font-weight:800;
+  text-decoration:none;
+}
+
+.footer {
+  text-align:center;
+  color:var(--muted);
+  font-size:13px;
+}
+
+img.cert { height:32px; filter:grayscale(100%) brightness(1.2); }
+
+@media(max-width:600px){ h1{font-size:32px} }
+</style>
 </head>
+
 <body>
 
 <header>
-    <div class="header-inner">
-        <strong style="font-size: 22px;">EBY<span style="color:var(--accent)">.</span></strong>
-        <span class="lang-btn" onclick="toggleLang()" id="lBtn">عربي</span>
-    </div>
+  <div class="header-inner">
+    <strong>EBY<span style="color:var(--accent)">.</span></strong>
+    <span class="lang-btn" onclick="toggleLang()" id="lBtn">عربي</span>
+  </div>
 </header>
 
 <div class="container">
-    <div id="en">
-        <div class="card">
-            <div class="subtitle">IT System Administrator</div>
-            <h1>Eby Sebastian</h1>
-            <p style="color: var(--muted); margin-top: 15px;">
-                <i class="fas fa-map-marker-alt"></i> UAE Hospitality Expert | 7+ Years Experience [cite: 4]
-            </p>
-            <div style="margin-top: 25px; display: flex; flex-wrap: wrap; gap: 20px;">
-                <span><i class="fas fa-envelope text-blue-400"></i> ebysebastian4795@gmail.com [cite: 33]</span>
-                <span><i class="fas fa-phone text-blue-400"></i> +91 9567749409 [cite: 33]</span>
-            </div>
-            <a href="Eby_Sebastian_CV.pdf" class="btn" style="margin-top: 30px;" download>
-                <i class="fas fa-file-pdf"></i> Download Full Resume
-            </a>
-        </div>
 
-        <div class="card">
-            <h2 style="margin-bottom: 30px;"><i class="fas fa-server"></i> Professional Experience</h2>
-            
-            <div class="timeline-item">
-                <div style="color: var(--accent); font-weight: 800;">2021 — 2025 [cite: 9]</div>
-                <div style="font-size: 20px; font-weight: 700;">IT Coordinator</div>
-                <div style="color: var(--muted); margin-bottom: 10px;">Sandy Beach Hotel and Resort, Fujairah [cite: 9]</div>
-                <ul style="padding-left: 20px; color: var(--muted);">
-                    <li>Managed 130+ IP cameras & NVR surveillance[cite: 12].</li>
-                    <li>Support for WinHMS & Prologic Touche POS[cite: 16].</li>
-                    <li>Network config: TP-Link, Mikrotik, D-Link[cite: 11].</li>
-                </ul>
-            </div>
+<!-- ENGLISH -->
+<div id="en">
 
-            <div class="timeline-item">
-                <div style="color: var(--accent); font-weight: 800;">2018 — 2021 [cite: 24]</div>
-                <div style="font-size: 20px; font-weight: 700;">IT Support Engineer</div>
-                <div style="color: var(--muted); margin-bottom: 10px;">Muthoot Fincorp, India [cite: 23]</div>
-                <p style="color: var(--muted);">Provided remote and onsite technical support for a massive branch network[cite: 25].</p>
-            </div>
-        </div>
+<div class="card">
+  <div class="subtitle">IT System Administrator · Infrastructure</div>
+  <h1>Eby Sebastian</h1>
 
-        <div class="card">
-            <h2><i class="fas fa-bolt"></i> Technical Expertise</h2>
-            <div style="margin-top: 20px;">
-                <span class="badge">CCNA [cite: 35]</span> <span class="badge">MCSE [cite: 37]</span> 
-                <span class="badge">Microsoft 365 [cite: 43]</span> <span class="badge">Network Troubleshooting [cite: 39]</span>
-                <span class="badge">CCTV & NVR [cite: 41]</span> <span class="badge">PMS/POS Support [cite: 42]</span>
-                <span class="badge">ERP Systems [cite: 44]</span> <span class="badge">IT Security [cite: 45]</span>
-            </div>
-        </div>
-    </div>
+  <p style="color:var(--muted);margin-top:18px;">
+    Experienced <strong>System Administrator</strong> with 7+ years managing
+    enterprise IT infrastructure in the UAE hospitality sector.
+    Specialized in Windows Server, Microsoft 365, networking, security,
+    and business-critical systems.
+  </p>
 
-    <div id="ar" style="display:none; text-align:right;">
-        <div class="card">
-            <h1>إيبي سيباستيان</h1>
-            <div class="subtitle">مسؤول أنظمة تقنية المعلومات</div>
-            <p>أكثر من 7 سنوات من الخبرة في قطاع الضيافة في دولة الإمارات العربية المتحدة[cite: 4].</p>
-        </div>
-    </div>
+  <div style="margin-top:18px;color:var(--muted);">
+    <i class="fas fa-envelope"></i> ebysebastian4795@gmail.com &nbsp;
+    <i class="fas fa-phone"></i> +91 9567749409
+  </div>
 
-    <footer class="footer" style="text-align: center; color: var(--muted); font-size: 13px;">
-        © 2026 Eby Sebastian | Professional SysAdmin Portfolio
-    </footer>
+  <div style="margin-top:20px;">
+    <span class="badge">System Administrator</span>
+    <span class="badge">IT Infrastructure Engineer</span>
+    <span class="badge">IT Support Lead</span>
+    <span class="badge">Enterprise IT Support</span>
+  </div>
+
+  <a href="Eby_Sebastian_CV.pdf" class="btn" style="margin-top:28px" download>
+    <i class="fas fa-file-pdf"></i> Download Resume
+  </a>
+</div>
+
+<div class="card">
+  <h2><i class="fas fa-server"></i> Professional Experience</h2>
+
+  <div class="timeline-item">
+    <strong>2021 — 2025 | IT Coordinator</strong><br>
+    <span style="color:var(--muted)">Sandy Beach Hotel & Resort, Fujairah</span>
+    <ul style="color:var(--muted)">
+      <li>Managed 130+ IP cameras and NVR infrastructure</li>
+      <li>Administered PMS & POS systems (WinHMS, Prologic)</li>
+      <li>Handled enterprise networking and IT security</li>
+    </ul>
+  </div>
+
+  <div class="timeline-item">
+    <strong>2018 — 2021 | IT Support Engineer</strong><br>
+    <span style="color:var(--muted)">Muthoot Fincorp, India</span>
+    <p style="color:var(--muted)">
+      Provided multi-branch infrastructure support and system administration.
+    </p>
+  </div>
+</div>
+
+<div class="card">
+  <h2><i class="fas fa-list-check"></i> Key Responsibilities (SysAdmin)</h2>
+  <ul style="color:var(--muted);line-height:1.8;">
+    <li>Windows Server, Active Directory, GPO administration</li>
+    <li>Microsoft 365, Exchange, endpoint & user management</li>
+    <li>LAN/WAN, firewall, router & switch administration</li>
+    <li>IT security, backups, patching & disaster recovery</li>
+    <li>CCTV, NVR, access control systems management</li>
+    <li>Vendor coordination & Tier-2/Tier-3 support</li>
+  </ul>
+</div>
+
+<div class="card">
+  <h2><i class="fas fa-network-wired"></i> Infrastructure Overview</h2>
+  <img src="https://i.imgur.com/2QZ6JQJ.png" alt="Infrastructure Diagram" style="width:100%;border-radius:14px;margin-bottom:18px;">
+  <p style="color:var(--muted)">
+    End-to-end infrastructure management including servers, networks,
+    surveillance, and enterprise applications.
+  </p>
+</div>
+
+<div class="card">
+  <h2><i class="fas fa-certificate"></i> Certifications & Expertise</h2>
+  <div style="display:flex;gap:25px;align-items:center;margin-bottom:20px;">
+    <img class="cert" src="https://upload.wikimedia.org/wikipedia/commons/6/64/Cisco_logo.svg"> CCNA
+    <img class="cert" src="https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg"> MCSE
+  </div>
+  <span class="badge">Windows Server</span>
+  <span class="badge">Microsoft 365</span>
+  <span class="badge">Networking</span>
+  <span class="badge">IT Security</span>
+  <span class="badge">CCTV / NVR</span>
+</div>
+
+</div>
+
+<!-- ARABIC -->
+<div id="ar" style="display:none;text-align:right">
+<div class="card">
+  <div class="subtitle">مسؤول أنظمة تقنية المعلومات والبنية التحتية</div>
+  <h1>إيبي سيباستيان</h1>
+
+  <p style="color:var(--muted);line-height:1.9;">
+    مسؤول أنظمة تقنية معلومات بخبرة تزيد عن 7 سنوات في إدارة وتشغيل
+    البنية التحتية لتقنية المعلومات في قطاع الضيافة بدولة الإمارات العربية المتحدة.
+  </p>
+
+  <ul style="color:var(--muted);line-height:1.8;">
+    <li>إدارة خوادم ويندوز وActive Directory</li>
+    <li>إدارة Microsoft 365 والبريد الإلكتروني</li>
+    <li>إدارة الشبكات وجدران الحماية</li>
+    <li>دعم أنظمة الفنادق PMS وأنظمة نقاط البيع</li>
+    <li>إدارة أنظمة المراقبة CCTV وNVR</li>
+    <li>تطبيق سياسات أمن المعلومات والنسخ الاحتياطي</li>
+  </ul>
+</div>
+</div>
+
+<div class="footer">© 2026 Eby Sebastian · System Administrator Portfolio</div>
+
 </div>
 
 <script>
-    const observer = new IntersectionObserver(entries => {
-        entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('show'); });
-    });
-    document.querySelectorAll('.card').forEach(c => observer.observe(c));
+const obs=new IntersectionObserver(e=>{
+  e.forEach(i=>i.isIntersecting&&i.target.classList.add("show"));
+});
+document.querySelectorAll(".card").forEach(c=>obs.observe(c));
 
-    function toggleLang() {
-        const en = document.getElementById('en'), ar = document.getElementById('ar'), b = document.getElementById('lBtn');
-        const isEn = en.style.display !== 'none';
-        en.style.display = isEn ? 'none' : 'block';
-        ar.style.display = isEn ? 'block' : 'none';
-        document.body.classList.toggle('rtl', isEn);
-        b.innerText = isEn ? 'English' : 'عربي';
-    }
+function toggleLang(){
+  const en=document.getElementById("en");
+  const ar=document.getElementById("ar");
+  const b=document.getElementById("lBtn");
+  const isEn=en.style.display!=="none";
+  en.style.display=isEn?"none":"block";
+  ar.style.display=isEn?"block":"none";
+  document.body.classList.toggle("rtl",isEn);
+  b.innerText=isEn?"English":"عربي";
+}
 </script>
+
 </body>
 </html>
