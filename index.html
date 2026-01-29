@@ -118,10 +118,12 @@ h2 {
     <h1>Eby Sebastian</h1>
     <p class="subtitle">IT System Administrator / IT Support Engineer</p>
     <p class="contact">
-        📧 <a href="mailto:ebysebastian4795@gmail.com">ebysebastian4795@gmail.com</a>
-        📞 +91 95677 49409 <br><br>
-        🔗 <a href="https://www.linkedin.com/in/eby-sebastian-7362b1158" target="_blank">
-        LinkedIn Profile</a>
+    📧 <span id="email"></span><br>
+    📞 <span id="phone"></span><br><br>
+    🔗 <a href="https://www.linkedin.com/in/eby-sebastian-7362b1158" target="_blank">
+    LinkedIn Profile</a>
+</p>
+
     </p>
 
     <!-- Download CV -->
@@ -187,6 +189,18 @@ function toggleDark() {
     document.body.classList.toggle("dark");
 }
 </script>
+    <script>
+const emailUser = "ebysebastian4795";
+const emailDomain = "gmail.com";
+document.getElementById("email").innerHTML =
+  `<a href="mailto:${emailUser}@${emailDomain}">${emailUser}@${emailDomain}</a>`;
+
+const phonePart1 = "+91";
+const phonePart2 = "9567749409";
+document.getElementById("phone").innerHTML =
+  `<a href="tel:${phonePart1}${phonePart2}">${phonePart1} ${phonePart2}</a>`;
+</script>
+
 
 </body>
 </html>
